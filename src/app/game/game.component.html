@@ -1,0 +1,36 @@
+<span class="seconds" id="seconds">Seconds</span>
+
+<div class="container">
+<form id="quizForm" >
+  <div class="group">
+  <Label class="row-sm-2 col-form-label" textWrap="true" >{{question.text}}</Label>
+</div>
+<div id="musicPlayed" *ngIf="playMusic" class="row-sm-2">
+  <button (click)="play()" class="btn btn-primary"  >Pusti pjesmu</button>
+</div>
+<div id="imageShowed" class="row-sm-2" hidden>
+  <img  src={{imagePath}} >
+</div>
+
+
+<div class="row-sm-2 col-form-input">
+
+  <input class="input"  id="answer" name="answer" type="text"  #answer="ngModel" [(ngModel)]="q">
+</div>
+
+
+<div  *ngIf="buttonEnable" class="row-sm-2">
+  <button  class="btn btn-primary" type="submit" (click)="odgovori()" >Odgovori</button>
+</div>
+
+<div *ngIf="message!==''">
+  <ngb-alert [type]="type" >{{message}}</ngb-alert>  
+  </div>
+
+ 
+</form>
+
+
+
+
+</div>

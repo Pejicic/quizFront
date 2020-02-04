@@ -1,0 +1,39 @@
+<app-admin-header></app-admin-header>
+<div class="container">
+    <input type="text" id="myInput" (keyup)="liveSearch()" placeholder="Pretraži po korisničkom imenu.." title="Type in a name">
+    <div *ngIf="message!==''">
+      <ngb-alert [type]="type" >{{message}}</ngb-alert>  
+      </div>
+<div class="row">
+
+  <div class="col-12">
+    <table class="table table-bordered" id="myTable">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Kategorija</th>
+          <th scope="col">Datum</th>
+          <th scope="col">Tekst</th>
+          <th scope="col">Odgovor</th>
+          <th scope="col">Akcija</th>
+
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let row of questions; let i = index">
+            <td>{{row.id}}</td>
+            <td>{{row.category}} </td>
+            <td>{{row.date}} </td>
+            <td>{{row.text}} </td>
+            <td>{{row.answer}} </td>
+            <td >
+             <button type="button" class="btn btn-light" (click)="delete(row.id)">Izbriši</button> 
+             </td>
+        
+
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>

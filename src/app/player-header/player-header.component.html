@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+    <ul class="navbar-nav">
+      <li id="userData" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a class="nav-link" [routerLink]="['/playerMain']" (click)="data()" >Podaci o korisniku</a>
+      </li>
+      <li id="changeData" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a class="nav-link" [routerLink]="['/editData']" (click)="editData()">Izmijeni podatke o sebi</a>
+      </li>
+      <li id="showResult" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" hidden>
+        <a class="nav-link" [routerLink]="['/showScore']" (click)="table()">Tabela sa rezultatima</a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a class="nav-link" [routerLink]="['/login']" (click)="logout()">Odjavi se</a>
+      </li>
+      
+     
+
+     
+    </ul>
+    <ul id="timeRemaining" class="nav navbar-nav ml-auto"> <span class="seconds" id="minutes">Minutes</span> <span class="seconds" id="seconds">Seconds</span> </ul>
+  </nav>

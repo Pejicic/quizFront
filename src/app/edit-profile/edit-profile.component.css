@@ -1,0 +1,26 @@
+html,body{
+    background-repeat: no-repeat;
+     background-image:url('../../assets/backgrounds/Awesome-HD-Pic.jpg') !important;
+  }
+
+  .row{
+      margin-top: 70px;
+      align-content: center;
+  }
+
+  .column {
+    text-align: center;
+    font-family: BANGERS;
+    float: left;
+    width: 30%;
+  }
+
+  .container {
+    padding: 2rem 0rem;
+    
+  }
+   label{
+    font-family:Bangers;
+    color: black;
+
+   }

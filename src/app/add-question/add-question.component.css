@@ -1,0 +1,22 @@
+
+
+html, body{
+    background-color: #16264c !important ;
+}
+
+.container {
+    padding: 2rem 0rem;
+    
+  }
+   label{
+    font-family:Bangers;
+    color: darkgrey;
+
+   }
+   .form-control-file{
+       background: white;
+   }
+
+ 
+
+  

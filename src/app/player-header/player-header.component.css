@@ -1,0 +1,14 @@
+
+a{
+    font-size: 20px;
+    font-family:Bangers;
+}
+
+span {
+    display: block;
+    font-family: Bangers;
+    font-size: x-large;
+   color:red;
+   border: 1px;
+   margin-right: 10px;
+  }

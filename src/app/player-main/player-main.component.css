@@ -1,0 +1,38 @@
+html,body{
+    background-repeat: no-repeat;
+     background-image:url('../../assets/backgrounds/Awesome-HD-Pic.jpg') !important;
+  }
+
+  div#transbox {
+    margin: 30px;
+    border-radius: 25px;
+    background-color: #ffffff;
+    border: 1px solid rgba(255,255,255,.5);;
+    opacity: 0.6;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+  }
+  div#transbox p {
+    margin: 5%;
+    font-weight: bold;
+    color: #000000;
+    font-family:Bangers;
+  }
+  div#transbox p#noteBene{
+      color: red;
+  }
+  div#transbox p.title {
+      font-size: 30px;
+      text-align: center;
+    margin: 5%;
+    font-weight: bold;
+    color: red;
+    font-family:Bangers;
+  }
+  .column#first {
+    float: left;
+    width: 30%;
+  }
+  .column#second {
+    float: left;
+    width: 70%;
+  }

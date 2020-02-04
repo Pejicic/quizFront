@@ -1,0 +1,30 @@
+html, body{
+    background-color:#16264c !important ;
+}
+
+.container {
+    padding: 2rem 0rem;
+  }
+  
+  h4 {
+    margin: 2rem 0rem 1rem;
+  }
+  
+ th{
+     color: grey;
+ }
+ td{
+    color: white;
+ }
+
+ #myInput {
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+  }
+
+  

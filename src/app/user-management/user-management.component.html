@@ -1,0 +1,41 @@
+<app-admin-header></app-admin-header>
+<div class="container">
+        <input type="text" id="myInput" (keyup)="liveSearch()" placeholder="Pretraži po korisničkom imenu.." title="Type in a name">
+        <div *ngIf="message!==''">
+					<ngb-alert [type]="type" >{{message}}</ngb-alert>  
+					</div>
+    <div class="row">
+
+      <div class="col-12">
+        <table class="table table-bordered" id="myTable">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Korisničko ime</th>
+              <th scope="col">Ime i prezime</th>
+              <th scope="col">Zemlja</th>
+              <th scope="col">Akcija</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let row of users; let i = index">
+                <td>{{i}}</td>
+                <td>{{row.username}} </td>
+                <td>{{row.name}} </td>
+                <td>{{row.country}} </td>
+                <td *ngIf="row.role === 'USER'; else blocked">
+                 <button type="button" class="btn btn-light" (click)="block(row.username)">Blokiraj</button> 
+                 
+                </td>
+                <ng-template #blocked>
+                  <td>
+                  <button type="button" class="btn btn-light"  (click)="unblock(row.username)">Odblokiraj</button> 
+                </td>
+                </ng-template>
+
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
