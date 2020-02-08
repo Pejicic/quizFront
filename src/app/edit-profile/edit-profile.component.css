@@ -1,7 +1,4 @@
-html,body{
-    background-repeat: no-repeat;
-     background-image:url('../../assets/backgrounds/Awesome-HD-Pic.jpg') !important;
-  }
+
 
   .row{
       margin-top: 70px;
@@ -24,3 +21,11 @@ html,body{
     color: black;
 
    }
+
+   #editProfile{
+
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-image:url('../../assets/backgrounds/Awesome-HD-Pic.jpg') ;
+  }

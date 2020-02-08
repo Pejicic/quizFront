@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
   selector: 'app-add-question',
   templateUrl: './add-question.component.html',
   styleUrls: ['./add-question.component.css'],
-  encapsulation:ViewEncapsulation.None
 })
 export class AddQuestionComponent implements OnInit {
   model: NgbDateStruct;

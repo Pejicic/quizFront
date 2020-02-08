@@ -1,10 +1,13 @@
-import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input, ViewEncapsulation } from '@angular/core';
 import { LoginDto } from '../model/LoginDto';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import { Router } from '@angular/router';
 import { QuestionDto } from '../model/QuestionDto';
 import { AnswerDto } from '../model/AnswerDto';
+import { SettingsDto } from '../model/SettingsDto';
+import { QuestionService } from '../services/question/question.service';
+
 
 @Component({
   selector: 'app-game',
@@ -22,17 +25,35 @@ export class GameComponent implements OnInit {
   answerDto: AnswerDto;
   performance:number=59;
   q:String="";
+  secondsLeft:string=""
+  audio:any=new Audio()
   playMusic:boolean=false;
   buttonEnable:boolean=true; 
+  end:boolean=false;
   hello:string="milky-way-2695569_1920.jpg";
   imagePath:string="('../../assets/backgrounds/"+this.hello;
+  settingsDto:SettingsDto=<SettingsDto>{}
 
 
 
 
-  constructor(private router:Router) { }
+
+
+  constructor(private router:Router,private service:QuestionService ) { }
   
   ngOnInit() {
+    this.service.getSettings().subscribe(data => {
+      this.settingsDto=data
+            
+              
+          },
+            error => {
+             console.log(error.statusText)
+            }
+          );
+      
+      
+    
     this.answerDto={
       id:0,
       answer:'',
@@ -52,21 +73,26 @@ export class GameComponent implements OnInit {
       path:''
     }
     this._connect();
+
+
+    
+
+
     
 
   }
 
+  
+
   play(){
-    let audio = new Audio();
-    audio.src = "../../../assets/"+this.question.path;
+    this.audio.src = "../../../assets/"+this.question.path;
     //audio.src = "../../../assets/"+"TheWeekndBlindingLights.mp3";
-    audio.load();
-    audio.play();
+    this.audio.load();
+    this.audio.play();
   }
   
 startCountdown(){
     var counter = 60;
-    this.q=this.question.text
     document.getElementById("imageShowed").style.visibility='hidden';
     this.message=""
     this.type=""
@@ -93,23 +119,30 @@ startCountdown(){
     }
   
     var interval = setInterval(() => {
-      document.getElementById("seconds").innerHTML = ( (counter < 10) ? "0" : "" ) + counter+" seconds remain";
+      this.secondsLeft=( (counter < 10) ? "0" : "" ) + counter+" sekundi";
+      this.q=this.question.text
 
       counter--;
   
-      if(counter < 0 ){
+      if(counter == 0 ){
         
         // The code here will run when
         // the timer has reached zero.
         
         clearInterval(interval);
-        this.startCountdown()
+        this.getEnd()
+        if(this.end==true ){
+         this._disconnect()
+          this.router.navigate(["/showScore"])
+          
+        }
       };
     }, 1000);
   };
   
 
   odgovori(){
+   this.audio.src=""
    this.answerDto.time=performance.now()-this.performance;
    this._send(this.answerDto)
    this.message="Vaš odgovor je sačuvan. Sačekajte vrijeme za naredno pitanje."
@@ -162,16 +195,30 @@ onMessageReceived(message) {
     console.log("Message Recieved from Server :: " + message.body);
     this.question=JSON.parse(message.body);
 
-    if(this.question.text==null || this.question.text==this.q ){
-
-      this.router.navigate(["showScore"])
-
-    }
-    else{
+   
       this.startCountdown()
 
-    }
+    
 
+}
+
+   getEnd(){
+  var nowDate = new Date();
+  var countertime = new Date(Date.UTC(nowDate.getFullYear(),nowDate.getMonth(),nowDate.getDate(),this.settingsDto.quizFinishedHours,this.settingsDto.quizFinishedMinutes,0)); //20 out of 24 hours = 8pm
+  
+  var curtime = nowDate.getTime(); //current time in milliseconds
+  var atime = countertime.getTime(); //countdown time
+  var diff = ((atime - curtime)/1000);// in seconds
+
+  console.log(diff)
+
+  if (diff-5<=0){
+    this.end=true
+  }
+  else{
+    this.end= false
+
+  }
 }
 
 

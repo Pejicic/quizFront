@@ -1,8 +1,12 @@
-html,body{
-    background-repeat: no-repeat;
-     background-image:url('../../assets/backgrounds/Awesome-HD-Pic.jpg') !important;
-  }
 
+
+  #playermain{
+
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-image:url('../../assets/backgrounds/Awesome-HD-Pic.jpg') ;
+  }
   div#transbox {
     margin: 30px;
     border-radius: 25px;

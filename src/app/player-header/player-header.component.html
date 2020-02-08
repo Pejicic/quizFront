@@ -6,9 +6,6 @@
       <li id="changeData" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
         <a class="nav-link" [routerLink]="['/editData']" (click)="editData()">Izmijeni podatke o sebi</a>
       </li>
-      <li id="showResult" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" hidden>
-        <a class="nav-link" [routerLink]="['/showScore']" (click)="table()">Tabela sa rezultatima</a>
-      </li>
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
         <a class="nav-link" [routerLink]="['/login']" (click)="logout()">Odjavi se</a>
       </li>
@@ -17,5 +14,5 @@
 
      
     </ul>
-    <ul id="timeRemaining" class="nav navbar-nav ml-auto"> <span class="seconds" id="minutes">Minutes</span> <span class="seconds" id="seconds">Seconds</span> </ul>
+    <ul id="timeRemaining" class="nav navbar-nav ml-auto"> <span class="seconds" id="minutes">{{minutesUntil}}</span> <span class="seconds" id="seconds">{{secondsUntil}}</span> </ul>
   </nav>

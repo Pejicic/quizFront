@@ -4,8 +4,8 @@ import { UserDto } from '../model/UserDto';
 import { AuthenticationService } from '../services/authentication.service';
 import { UserServiceService } from '../services/user/user-service.service';
 import { Router } from '@angular/router';
+import { SettingsDto } from '../model/SettingsDto';
 import { environment } from 'src/environments/environment';
-
 
 @Component({
   selector: 'app-login-page',
@@ -19,10 +19,13 @@ export class LoginPageComponent implements OnInit {
   type = '';
   grecaptcha: string="";
 
-
-  constructor(private autenticationService:AuthenticationService,private userService:UserServiceService, private router:Router) { }
+  constructor(private autenticationService:AuthenticationService,private userService:UserServiceService, private router:Router) { 
+     
+    
+     }
 
   ngOnInit() {
+    
     this.loginDto={
       username:"",
       password:""
@@ -38,7 +41,16 @@ export class LoginPageComponent implements OnInit {
       country:""
 
     }
+
+
+  
+
+
+
+
   }
+
+  
   
   login(){
 
@@ -59,18 +71,18 @@ export class LoginPageComponent implements OnInit {
         this.type='success'
       
       localStorage.setItem('currentUser', JSON.stringify({ username: this.loginDto.username, role:data.role, token: data.token}));
-      if(data.role==environment.ROLES[0]){
+      if(data.role==environment.ROLES[1]){
         setTimeout(() => 
 {
-  this.router.navigate(['/userManage'])},
+  this.router.navigate(['userManage'])},
 5000);
 
         
       }
-      if(data.role==environment.ROLES[1]){
+      if(data.role==environment.ROLES[0]){
         setTimeout(() => 
 {
-  this.router.navigate(['/playerMain'])},
+  this.router.navigate(['playerMain'])},
 5000);
 
         

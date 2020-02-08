@@ -6,8 +6,6 @@ import { UserDto } from '../model/UserDto';
   selector: 'app-player-main',
   templateUrl: './player-main.component.html',
   styleUrls: ['./player-main.component.css'],
-  encapsulation: ViewEncapsulation.None
-
 })
 export class PlayerMainComponent implements OnInit {
    user:UserDto;
@@ -23,6 +21,7 @@ export class PlayerMainComponent implements OnInit {
       country:"vfdv"
 
     }
+
     
     this.userService.getUser().subscribe(data => {
       this.user=data;

@@ -1,9 +1,18 @@
-<app-player-header></app-player-header>
+
+<html>
+  <body>
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+    <ul class="navbar-nav">
+        <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a class="nav-link" [routerLink]="['/login']" (click)="logout()">Odjavi se</a>
+          </li>
+    </ul>
+    
+</nav>
+
+
 <div class="container">
     <input type="text" id="myInput" (keyup)="liveSearch()" placeholder="Pretraži po korisničkom imenu.." title="Type in a name">
-    <div *ngIf="message!==''">
-                <ngb-alert [type]="type" >{{message}}</ngb-alert>  
-                </div>
 <div class="row">
 
   <div class="col-12">
@@ -32,3 +41,6 @@
   </div>
 </div>
 </div>
+</body>
+
+</html>

@@ -7,14 +7,8 @@
     
 export const environment = {
   production: false,
-  hoursBegin: 10,     //pocetak prijave za kviz
-  hoursEnd:10,        //kraj prijave za kviz i pocetak real time kviza
-  minutesBegin:0,   //pocetak prijave za kviz
-  minutesEnd:10,      //kraj prijave za kviz i pocetak real time kviza
-  quizFinishedHours:10,   //kraj kviza
-  quizFinishedMinutes:16,  //kraj kviza
-  dayOfQuiz:2,  // pocinje od nedjelje sa 0   
-  ROLES: ["ADMIN","USER","BLOCKEDUSER"],
+  ROLES:["USER","ADMIN","BLOCKEDUSER"]
+  
  
 };
 

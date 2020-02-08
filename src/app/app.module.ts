@@ -29,11 +29,7 @@ const appRoutes: Routes = [
   {
     path: "main",
     component: MainPageComponent,
-    children: [
-
-      { path: 'countdown', component: CountdownComponent},
-      
-    ] 
+ 
 
   },
 

@@ -11,4 +11,12 @@ span {
   font-size:80px;
   color:red;
 }
+
+#countholder{
+  width: 100vw;
+  height: 100vh;
+  background-repeat: no-repeat;
+   background-image:url('../../assets/backgrounds/milky-way-2695569_1920.jpg') 
+  
+}
   

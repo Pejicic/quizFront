@@ -1,9 +1,9 @@
-<span class="seconds" id="seconds">Seconds</span>
+<span class="seconds" id="seconds">{{secondsLeft}}</span>
 
 <div class="container">
 <form id="quizForm" >
   <div class="group">
-  <Label class="row-sm-2 col-form-label" textWrap="true" >{{question.text}}</Label>
+  <Label class="row-sm-2 col-form-label" textWrap="true" >{{q}}</Label>
 </div>
 <div id="musicPlayed" *ngIf="playMusic" class="row-sm-2">
   <button (click)="play()" class="btn btn-primary"  >Pusti pjesmu</button>
@@ -15,7 +15,7 @@
 
 <div class="row-sm-2 col-form-input">
 
-  <input class="input"  id="answer" name="answer" type="text"  #answer="ngModel" [(ngModel)]="q">
+  <input class="input"  id="answer" name="answer" type="text"  #answer="ngModel" [(ngModel)]="answerDto.answer">
 </div>
 
 

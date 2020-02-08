@@ -8,7 +8,7 @@ import { LoginDto } from '../model/LoginDto';
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
   styleUrls: ['./edit-profile.component.css'],
-  encapsulation: ViewEncapsulation.None
+
 })
 export class EditProfileComponent implements OnInit {
   dto:UserDto;

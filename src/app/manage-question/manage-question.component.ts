@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
   selector: 'app-manage-question',
   templateUrl: './manage-question.component.html',
   styleUrls: ['./manage-question.component.css'],
-  encapsulation:ViewEncapsulation.None
 
 })
 export class ManageQuestionComponent implements OnInit {

@@ -1,4 +1,4 @@
-html, body{
+html,body{
     background-color:#16264c !important ;
 }
 
@@ -26,3 +26,10 @@ html, body{
     border: 1px solid #ddd;
     margin-bottom: 12px;
   }
+
+  a{
+    font-size: 20px;
+    font-family:Bangers;
+}
+
+

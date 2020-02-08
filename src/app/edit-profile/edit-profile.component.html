@@ -1,15 +1,17 @@
 <app-player-header></app-player-header>
-<div *ngIf="!(data || pass)" class="row">
-    <div class="column">
-        <button (click)="changeData()" class="btn btn-primary" type="submit" >Promijeni podatke o sebi</button>
+<div id="editProfile">
 
-    </div>
-    <div class="column">
-        <button (click)="changePassword()" class="btn btn-primary" type="submit" >Promijeni lozinku</button>
-    </div>
-</div>
 
 <div class="container">
+	<div *ngIf="!(data || pass)" class="row">
+		<div class="column">
+			<button (click)="changeData()" class="btn btn-primary" type="submit" >Promijeni podatke o sebi</button>
+	
+		</div>
+		<div class="column">
+			<button (click)="changePassword()" class="btn btn-primary" type="submit" >Promijeni lozinku</button>
+		</div>
+	</div>
     <form *ngIf="data" id="dataChange" (ngSubmit)="saveDataChange()"> 
         <div class="form-group row"><label for="name" class="col-sm-2 col-form-label">Ime i prezime:</label>
             <div class="col-sm-10">
@@ -326,6 +328,8 @@
 
 
     </form>
+
+</div>
 
 </div>
 

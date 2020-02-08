@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { QuestionDto } from 'src/app/model/QuestionDto';
+import { SettingsDto } from 'src/app/model/SettingsDto';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,21 @@ export class QuestionService {
       headers: this.headers
     })
   }
+
+
+ getSettings():Observable<SettingsDto>{
+    return this.http.get<SettingsDto>(`${this.Url}/getSettings`,{
+      headers: this.headers
+    })
+  }
+  getSetting() {
+
+    const promise = this.http.get(`${this.Url}/getSettings`)
+    .toPromise();
+    
+        return promise
+  }
+
 
   delete(id:number):Observable<boolean>{
     return this.http.delete<boolean>(`${this.Url}/delete/${id}`,{

@@ -1,3 +1,5 @@
+
+
 span {
     display: block;
     font-family: Bangers;
@@ -14,7 +16,7 @@ span {
   label{
     font-family:Bangers;
     color: black;
-    font-size: 35px;
+    font-size: 4vh;
     margin-left: 30px;
     margin-right: 30px;
     margin-top: 30px;

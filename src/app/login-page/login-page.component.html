@@ -1,7 +1,7 @@
 <div class="login-wrap">
 	<div class="login-html">
-		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
-		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Uloguj se</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Registruj se</label>
 		<div class="login-form">
 		<form #loginForm="ngForm"> 
 			<div class="sign-in-htm">
@@ -28,7 +28,7 @@
 				</div>
 				<re-captcha (resolved)="resolved ($event)" siteKey="6LdkN9QUAAAAAFAKg5iLbCkxSKCsiC1esPuVjqQv"></re-captcha>
 				<div class="group">
-					<input type="submit" class="button" value="Sign In" [disabled]="loginForm.invalid" (click)="login()">
+					<input type="submit" class="button" value="Potvrdi" [disabled]="loginForm.invalid" (click)="login()">
 				</div>
 				<div *ngIf="message!==''">
 					<ngb-alert [type]="type" >{{message}}</ngb-alert>  
@@ -351,7 +351,7 @@
 					</div>
 				</div>
 				<div class="group">
-					<input type="submit" class="button" [disabled]="registerForm.invalid" value="Sign Up" (click)="register()">
+					<input type="submit" class="button" [disabled]="registerForm.invalid" value="Potvrdi" (click)="register()">
 				</div>
 				<div *ngIf="message!==''">
 					<ngb-alert [type]="type" >{{message}}</ngb-alert>  

@@ -2,27 +2,22 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { ScoreService } from '../services/score/score.service';
 import { ScoreDto } from '../model/ScoreDto';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-show-score',
   templateUrl: './show-score.component.html',
-  styleUrls: ['./show-score.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./show-score.component.css']
 })
 export class ShowScoreComponent implements OnInit {
 
   scores:ScoreDto[];
 
 
-  constructor(private router:Router, private scoreService:ScoreService) { }
+  constructor(private router:Router, private scoreService:ScoreService, private authService:AuthenticationService) { }
 
   ngOnInit() {
 
-    document.getElementById("userData").style.display='none';
-    document.getElementById("changeData").style.display='none';
-    document.getElementById("timeRemaining").style.display='none';
-
-    document.getElementById("showResult").style.visibility='visible';
 
     this.scoreService.getScores().subscribe(data => {
       this.scores=data;
@@ -36,7 +31,9 @@ export class ShowScoreComponent implements OnInit {
   }
 
 
-
+  logout(){
+    this.authService.logout()  
+    }
 
 
 
