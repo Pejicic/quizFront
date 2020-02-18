@@ -28,32 +28,26 @@ export class GameComponent implements OnInit {
   secondsLeft:string=""
   audio:any=new Audio()
   playMusic:boolean=false;
+  showVideo:boolean=false;
+  showImage:boolean=false;
+
   buttonEnable:boolean=true; 
   end:boolean=false;
-  hello:string="milky-way-2695569_1920.jpg";
-  imagePath:string="('../../assets/backgrounds/"+this.hello;
+  imagePath:string="('../../assets/sipa.jpg";
   settingsDto:SettingsDto=<SettingsDto>{}
-
-
-
-
-
 
   constructor(private router:Router,private service:QuestionService ) { }
   
   ngOnInit() {
     this.service.getSettings().subscribe(data => {
-      this.settingsDto=data
-            
+      this.settingsDto=data  
               
           },
             error => {
              console.log(error.statusText)
             }
-          );
-      
-      
-    
+          );  
+
     this.answerDto={
       id:0,
       answer:'',
@@ -72,52 +66,43 @@ export class GameComponent implements OnInit {
       points: 0,
       path:''
     }
-    this._connect();
-
-
+    this._connect()
     
-
-
-    
-
   }
 
   
 
   play(){
     this.audio.src = "../../../assets/"+this.question.path;
-    //audio.src = "../../../assets/"+"TheWeekndBlindingLights.mp3";
     this.audio.load();
     this.audio.play();
   }
   
 startCountdown(){
     var counter = 60;
-    document.getElementById("imageShowed").style.visibility='hidden';
+   this.showImage=false;
+   this.showVideo=false;
+    this.playMusic=false;
     this.message=""
     this.type=""
     this.answerDto.answer=""
     this.buttonEnable=true;
     this.answerDto.id=this.question.id;
+    this.audio.src=""
     this.performance=performance.now();
     if(this.question.type=="MUSIC"){
-      this.hello=this.question.path;
       this.playMusic=true;
 
     }
-    else if(this.question.type="PICTURE"){
-      this.playMusic=false;
-      this.hello=this.question.path;
-      document.getElementById("imageShowed").style.visibility='visible';
-
-
+    else if(this.question.type=="PICTURE" || this.question.type=="ASSOCIATION" ){
+      this.imagePath="('../../assets/"+this.question.path;
+       this.showImage=true;
     }
-    else{
-
-      this.playMusic=false;
-
+    else if(this.question.type=="VIDEO"){
+      this.imagePath="('../../assets/"+this.question.path;
+      this.showVideo=true;
     }
-  
+   
     var interval = setInterval(() => {
       this.secondsLeft=( (counter < 10) ? "0" : "" ) + counter+" sekundi";
       this.q=this.question.text
@@ -125,10 +110,6 @@ startCountdown(){
       counter--;
   
       if(counter == 0 ){
-        
-        // The code here will run when
-        // the timer has reached zero.
-        
         clearInterval(interval);
         this.getEnd()
         if(this.end==true ){
@@ -151,7 +132,6 @@ startCountdown(){
   }
 
   _connect() {
-    console.log("Initialize WebSocket Connection");
     let ws = new SockJS(this.webSocketEndPoint);
     this.stompClient = Stomp.over(ws);
     const _this = this;
@@ -160,7 +140,6 @@ startCountdown(){
         _this.stompClient.subscribe(_this.topic, function (sdkEvent:QuestionDto) {
             _this.onMessageReceived(sdkEvent);
         });
-        //_this.stompClient.reconnect_delay = 2000;
     }, this.errorCallBack);
 };
 
@@ -171,10 +150,8 @@ _disconnect() {
     else{
         alert("stomp empty")
     }
-    console.log("Disconnected");
 }
 
-// on error, schedule a reconnection attempt
 errorCallBack(error) {
     console.log("errorCallBack -> " + error)
     setTimeout(() => {
@@ -182,24 +159,17 @@ errorCallBack(error) {
     }, 5000);
 }
 
-/**
-* Send message to sever via web socket
-* @param {*} message 
-*/
 _send(message) {
-    console.log("calling logout api via web socket");
-    this.stompClient.send("/app/hello", {}, JSON.stringify(message));
+  console.log("calling logout api via web socket");
+  this.stompClient.send("/app/hello", {}, JSON.stringify(message));
+
+  //this.stompClient.send("/app/hello", {}, JSON.stringify(message));
 }
 
 onMessageReceived(message) {
     console.log("Message Recieved from Server :: " + message.body);
     this.question=JSON.parse(message.body);
-
-   
       this.startCountdown()
-
-    
-
 }
 
    getEnd(){

@@ -8,8 +8,15 @@
 <div id="musicPlayed" *ngIf="playMusic" class="row-sm-2">
   <button (click)="play()" class="btn btn-primary"  >Pusti pjesmu</button>
 </div>
-<div id="imageShowed" class="row-sm-2" hidden>
+<div id="imageShowed"  *ngIf="showImage" class="row-sm-2" >
   <img  src={{imagePath}} >
+</div>
+
+<div *ngIf="showVideo">
+<video id="videoShowed"  width="500" height="500" autoplay >
+  <source src={{imagePath}} type="video/mp4">
+
+</video>
 </div>
 
 

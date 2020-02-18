@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
-import { JwtUtilsService } from './security/jwt-utils.service';
 import { Observable } from 'rxjs';
 import { LoginDto } from '../model/LoginDto';
 import { UserDto } from '../model/UserDto';
@@ -14,12 +13,10 @@ export class AuthenticationService {
   private readonly loginPath = 'api/user'
     private headers = new HttpHeaders({ "Content-Type": "application/json" });
 
-    constructor(private http: HttpClient, private jwtUtilsService: JwtUtilsService) { }
+    constructor(private http: HttpClient) { }
 
     login(user:LoginDto,param:any):Observable<TokenDto>{
         console.log(user.username)
-      var token = '';
-      var role = '';
       return this.http.post<TokenDto>(`${this.loginPath}/login`, JSON.stringify(user), {
         headers: this.headers,
         params:{'g-recaptcha-response':param}

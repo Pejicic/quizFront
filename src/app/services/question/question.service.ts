@@ -48,14 +48,6 @@ export class QuestionService {
       headers: this.headers
     })
   }
-  getSetting() {
-
-    const promise = this.http.get(`${this.Url}/getSettings`)
-    .toPromise();
-    
-        return promise
-  }
-
 
   delete(id:number):Observable<boolean>{
     return this.http.delete<boolean>(`${this.Url}/delete/${id}`,{

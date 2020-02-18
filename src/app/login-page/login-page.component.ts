@@ -19,8 +19,7 @@ export class LoginPageComponent implements OnInit {
   type = '';
   grecaptcha: string="";
 
-  constructor(private autenticationService:AuthenticationService,private userService:UserServiceService, private router:Router) { 
-     
+  constructor(private autenticationService:AuthenticationService,private userService:UserServiceService, private router:Router) {  
     
      }
 
@@ -42,15 +41,7 @@ export class LoginPageComponent implements OnInit {
 
     }
 
-
-  
-
-
-
-
   }
-
-  
   
   login(){
 
@@ -156,7 +147,6 @@ export class LoginPageComponent implements OnInit {
   }
 
   
-
   }
 
 
